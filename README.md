@@ -19,3 +19,5 @@ python3 manage.py runserver 0.0.0.0:8000
 ```
 
 ## Contributors
+
+RICHARD Arthur, HAVARD Antoine, ROYANT Tom
