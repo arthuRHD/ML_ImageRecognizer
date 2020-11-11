@@ -3,7 +3,6 @@ import os
 import PIL
 import PIL.Image
 import tensorflow as tf
-import tensorflow_datasets as tfds
 import matplotlib.pyplot as plt
 from tensorflow.keras import datasets, layers, models
 
@@ -86,6 +85,16 @@ model.compile(
   optimizer='adam',
   loss=tf.losses.SparseCategoricalCrossentropy(from_logits=True),
   metrics=['accuracy'])
+
+def configure_for_performance(ds):
+    ds = ds.cache()
+    ds = ds.shuffle(buffer_size=1000)
+    ds = ds.batch(batch_size)
+    ds = ds.prefetch(buffer_size=AUTOTUNE)
+    return ds
+
+train_ds = configure_for_performance(train_ds)
+val_ds = configure_for_performance(val_ds)
 
 model.fit(
   train_ds,
