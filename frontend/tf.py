@@ -58,7 +58,6 @@ normalized_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
 image_batch, labels_batch = next(iter(normalized_ds))
 first_image = image_batch[0]
 # Notice the pixels values are now in `[0,1]`.
-print(np.min(first_image), np.max(first_image)) 
 
 AUTOTUNE = tf.data.experimental.AUTOTUNE
 
@@ -86,15 +85,15 @@ model.compile(
   loss=tf.losses.SparseCategoricalCrossentropy(from_logits=True),
   metrics=['accuracy'])
 
-def configure_for_performance(ds):
-    ds = ds.cache()
-    ds = ds.shuffle(buffer_size=1000)
-    ds = ds.batch(batch_size)
-    ds = ds.prefetch(buffer_size=AUTOTUNE)
-    return ds
+# def configure_for_performance(ds):
+#     ds = ds.cache()
+#     ds = ds.shuffle(buffer_size=1000)
+#     ds = ds.batch(batch_size)
+#     ds = ds.prefetch(buffer_size=AUTOTUNE)
+#     return ds
 
-train_ds = configure_for_performance(train_ds)
-val_ds = configure_for_performance(val_ds)
+# train_ds = configure_for_performance(train_ds)
+# val_ds = configure_for_performance(val_ds)
 
 model.fit(
   train_ds,
