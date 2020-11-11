@@ -1,0 +1,14 @@
+<html>
+    <head>Reconnaissance d'image</head>
+    <body>
+        <form enctype="multipart/form-data" action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Save">
+        </form>
+        {% if form.saved %}
+            <h3>Succesfully uploaded</h3>
+            <img src="{{ form.image.url }}" alt="connect" style="max-height:300px">
+        {% endif %}
+    </body>
+</html>

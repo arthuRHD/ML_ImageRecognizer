@@ -1,2 +1,4 @@
 bigdata-proj
 .vscode
+__pycache__
+media/images/*
