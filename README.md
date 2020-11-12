@@ -1,6 +1,7 @@
 # ATA Project
 
 A Django application that classify sended pictures with TensorFlow and store them with MangoDB
+The frontend is made with a sexy design, UX/UI 2020 friendly au pire bouffe moi le poireau
 
 ## Install
 
@@ -32,6 +33,8 @@ Launch the django app
 cd projet-ata
 python3 manage.py runserver 0.0.0.0:8000
 ```
+
+Go to [this page](http://localhost:8000/upload)
 
 ## Only test model
 
