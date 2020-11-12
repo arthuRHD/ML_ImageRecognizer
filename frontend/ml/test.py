@@ -3,6 +3,7 @@ import tensorflow as tf
 import numpy as np
 from lib.config import (img_height, img_width, export_dir, classnames, tested_picture_path)
 
+
 img = tf.keras.preprocessing.image.load_img(
     tested_picture_path, target_size=(img_height, img_width)
 )

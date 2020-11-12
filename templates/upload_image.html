@@ -6,9 +6,31 @@
             {{ form }}
             <input type="submit" value="Save">
         </form>
-        {% if form.saved %}
-            <h3>Succesfully uploaded</h3>
-            <img src="{{ form.image.url }}" alt="connect" style="max-height:300px">
+        {% if form.is_valid %}
+            <h3>{{ resultat }}</h3>
         {% endif %}
     </body>
+    <hr>
+    <table>
+        <thead>
+            <th>Filename</th>
+            <th>Size</th>
+            <th>Date</th>
+            <th>Accuracy</th>
+            <th>Classname</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+        {% for log in logs %}
+            <tr>
+                <td>{{ log.file }}</td>
+                <td>{{ log.size }}</td>
+                <td>{{ log.upload_date|date:"Y-m-d" }}</td>
+                <td>{{ log.accuracy }}</td>
+                <td>{{ log.class_name }}</td>
+                <td><a href="/delete/?log_row={{ log.file }}">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </html>

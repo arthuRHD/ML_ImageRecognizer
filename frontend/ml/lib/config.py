@@ -1,11 +1,11 @@
 import tensorflow as tf
 from os import path
 
-tested_picture_path = "/home/arthur/bmw.jpeg"
+
+tested_picture_path = "/home/arthur/waifu.jpeg"
 
 dataset_name = "Data"
 dataset_url = "https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz"
-num_classes = 5
 classnames = ["Animaux", "Humains", "PersoFictifs", "Plantes", "Vehicules"]
 
 batch_size = 32

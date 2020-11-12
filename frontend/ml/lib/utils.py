@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow.keras import layers
-from .config import (batch_size, img_height, img_width, AUTOTUNE, export_dir, num_classes)
+from .config import (batch_size, img_height, img_width, AUTOTUNE, export_dir, classnames)
 import pathlib
 
 def download_dataset(dataset_url: str, dataset_name: str):
@@ -25,7 +25,7 @@ def create_model():
         layers.MaxPooling2D(),
         layers.Flatten(),
         layers.Dense(128, activation='relu'),
-        layers.Dense(num_classes)
+        layers.Dense(len(classnames))
     ])
     model.compile(
         optimizer='adam',

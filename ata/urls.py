@@ -21,7 +21,8 @@ from frontend.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('upload/', upload_doc, name="Formulaire d'upload")
+    path('upload/', upload_doc, name="Formulaire d'upload"),
+    path('delete/', clear_row, name="Delete log row")
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

@@ -9,6 +9,21 @@ cd projet-ata
 pip install -r requirements.txt
 ```
 
+## Config
+
+Create a mongodb database nammed `ata`
+
+```sh
+mongo
+> use ata
+```
+
+Migrate django models to the database
+
+```sh
+python3 manage.py migrate
+```
+
 ## Usage
 
 Launch the django app
