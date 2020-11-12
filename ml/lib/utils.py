@@ -1,9 +1,6 @@
-import PIL
-import PIL.Image
 import tensorflow as tf
 from tensorflow.keras import layers
-from .config import (batch_size, img_height, img_width, AUTOTUNE)
-
+from .config import (batch_size, img_height, img_width, AUTOTUNE, export_dir, num_classes)
 import pathlib
 
 
@@ -15,7 +12,7 @@ def download_dataset(dataset_url: str, dataset_name: str):
     return data_directory_path
 
 
-def create_model(num_classes: int):
+def create_model():
     model = tf.keras.Sequential([
         layers.experimental.preprocessing.Rescaling(1./255),
         layers.Conv2D(32, 3, activation='relu'),
@@ -36,12 +33,23 @@ def create_model(num_classes: int):
     return model
 
 
+def get_model():
+    if tf.saved_model.contains_saved_model(export_dir):
+        model = tf.keras.models.load_model(export_dir)
+    else:
+        raise FileNotFoundError(f"{export_dir} does not contain models")
+    return model
+
+
 def launch_training(model_to_train: tf.keras.Sequential, runs: int, training_dataset, validation_dataset):
+    print("Training model")
     model_to_train.fit(
         training_dataset,
         validation_data=validation_dataset,
         epochs=runs
     )
+    print("Saving model")
+    tf.saved_model.save(model_to_train, export_dir)
 
 
 def create_image_dataset(data_dir: pathlib.Path, dataset_subset: str):
@@ -64,3 +72,4 @@ def create_normalized_dataset(training_dataset):
         lambda x, y: (get_normalization_layer()(x), y)
     )
     return normalized_ds
+    
