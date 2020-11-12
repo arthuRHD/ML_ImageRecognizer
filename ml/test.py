@@ -1,10 +1,10 @@
 # Testing model here
 import tensorflow as tf
 import numpy as np
-from lib.config import (img_height, img_width, export_dir, classnames)
+from lib.config import (img_height, img_width, export_dir, classnames, tested_picture_path)
 
 img = tf.keras.preprocessing.image.load_img(
-    "/home/arthur/pkmn.png", target_size=(img_height, img_width)
+    tested_picture_path, target_size=(img_height, img_width)
 )
 img_array = tf.keras.preprocessing.image.img_to_array(img)
 img_array = tf.expand_dims(img_array, 0)

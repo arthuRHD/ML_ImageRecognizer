@@ -1,6 +1,8 @@
 import tensorflow as tf
 from os import path
 
+tested_picture_path = "/home/arthur/bmw.jpeg"
+
 dataset_name = "Data"
 dataset_url = "https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz"
 num_classes = 5

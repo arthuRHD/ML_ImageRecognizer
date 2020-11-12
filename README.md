@@ -18,6 +18,24 @@ cd projet-ata
 python3 manage.py runserver 0.0.0.0:8000
 ```
 
+## Only test model
+
+Specify the path of the tested picture in [config.py](ml/lib/config.py)
+
+```py
+tested_picture_path = "/home/arthur/bmw.jpeg"
+```
+
+Launch the python file in terminal
+
+```sh
+python3 ml/test.py
+```
+
+Appreciate the results
+
+![demo_img](templates/demo_img.png)
+
 ## Contributors
 
 RICHARD Arthur, HAVARD Antoine, ROYANT Tom
