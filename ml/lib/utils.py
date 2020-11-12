@@ -3,7 +3,6 @@ from tensorflow.keras import layers
 from .config import (batch_size, img_height, img_width, AUTOTUNE, export_dir, num_classes)
 import pathlib
 
-
 def download_dataset(dataset_url: str, dataset_name: str):
     data_directory = tf.keras.utils.get_file(origin=dataset_url, 
                                    fname=dataset_name, 
@@ -11,6 +10,9 @@ def download_dataset(dataset_url: str, dataset_name: str):
     data_directory_path = pathlib.Path(data_directory)
     return data_directory_path
 
+def get_custom_dataset():
+    data_directory_path = pathlib.Path("/home/arthur/.keras/datasets/Data")
+    return data_directory_path
 
 def create_model():
     model = tf.keras.Sequential([
