@@ -10,6 +10,6 @@ img_height = 180
 img_width = 180
 
 num_training_runs = 10
-export_dir = path.abspath(path.join(__file__, 'saved_models'))
+export_dir = path.abspath(path.join(path.dirname(__file__), dataset_name))
 
 AUTOTUNE = tf.data.experimental.AUTOTUNE
