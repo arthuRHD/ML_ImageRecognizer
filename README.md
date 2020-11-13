@@ -40,16 +40,10 @@ Go to [this page](http://localhost:8000/upload)
 
 ## Only test model
 
-Specify the path of the tested picture in [config.py](frontend/ml/lib/config.py)
-
-```py
-tested_picture_path = "/home/arthur/bmw.jpeg"
-```
-
-Launch the python file in terminal
+Launch the python file in terminal and specify the path of the tested picture
 
 ```sh
-python3 ml/test.py
+python3 frontend/ml/test.py /home/arthur/bmw.jpeg
 ```
 
 Appreciate the results

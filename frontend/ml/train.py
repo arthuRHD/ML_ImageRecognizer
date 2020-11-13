@@ -1,8 +1,7 @@
 from lib.utils import launch_training, create_model, create_image_dataset, get_custom_dataset
-from lib.config import (dataset_name, dataset_url, num_training_runs)
+from lib.config import num_training_runs
 
 
-# data_dir = download_dataset(dataset_url, dataset_name)
 data_dir = get_custom_dataset()
 
 train_ds = create_image_dataset(data_dir, "training")
