@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UploadDocumentForm
 from .models import Image
-from .ml.lib.config import (img_height, img_width, export_dir, classnames, tested_picture_path)
+from .ml.lib.config import (img_height, img_width, export_dir, classnames)
 import tensorflow as tf
 from io import BytesIO
 import numpy as np
@@ -28,7 +28,7 @@ def upload_doc(request):
             score = tf.nn.softmax(predictions[0])
 
             classname_predicted = classnames[np.argmax(score)]
-            resultat = f"Cette image appartient à la catégorie {classname_predicted} ({100 * np.max(score)})"            
+            resultat = f"Cette image appartient à la catégorie {classname_predicted} (sûr à {round(100 * np.max(score),2)}%)"            
             Image.objects.create(
                 file=file,
                 size=file.size,
@@ -39,8 +39,10 @@ def upload_doc(request):
             
     return render(request, 'upload_image.html', locals())
 
+
 def clear_row(request):
     if request.method == 'GET':
         img = Image.objects.get(file=request.GET['log_row'])
+        img.file.delete(save=True)
         img.delete()
     return redirect("/upload")
