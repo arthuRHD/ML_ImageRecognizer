@@ -1,7 +1,7 @@
 # Testing model here
 import tensorflow as tf
 import numpy as np
-from lib.config import (img_height, img_width, export_dir, classnames, tested_picture_path)
+from lib.config import (img_height, img_width, export_dir, classnames)
 import sys
 
 

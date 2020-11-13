@@ -5,6 +5,14 @@
 A Django application that classify sended pictures with TensorFlow and store them with MangoDB
 The frontend is made with a sexy design, UX/UI 2020 friendly
 
+## Classnames
+
+- Humans
+- Cars
+- Plants
+- Fictional characters
+- Animals
+
 ## Install
 
 ```sh
