@@ -2,7 +2,7 @@
 
 ![Python application](https://github.com/arthuRHD/projet-ata/workflows/Python%20application/badge.svg)
 
-A Django application that classify sended pictures with TensorFlow and store them with MangoDB
+A Django application that classify sended pictures with TensorFlow and store them with MongoDB
 The frontend is made with a sexy design, UX/UI 2020 friendly
 
 ## Classnames
